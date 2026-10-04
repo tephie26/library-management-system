@@ -5,16 +5,14 @@ from typing import Optional
 
 @dataclass
 class User:
-    """Admin and Librarian users."""
     id: Optional[int] = None
     username: str = ""
-    hashed_password: str = ""
-    role: str = ""  # 'admin' or 'librarian'
+    password_hash: str = ""
+    role: str = ""
 
 
 @dataclass
 class Member:
-    """Library members who can borrow books."""
     id: Optional[int] = None
     name: str = ""
     email: str = ""
@@ -23,7 +21,6 @@ class Member:
 
 @dataclass
 class Book:
-    """Books in the library."""
     id: Optional[int] = None
     title: str = ""
     author: str = ""
@@ -33,10 +30,9 @@ class Book:
 
 @dataclass
 class Loan:
-    """Book loans (issues and returns)."""
     id: Optional[int] = None
     member_id: int = 0
     book_id: int = 0
-    issue_date: date = None
-    due_date: date = None
+    issue_date: Optional[date] = None
+    due_date: Optional[date] = None
     return_date: Optional[date] = None
